@@ -48,7 +48,6 @@ img {
   margin: 0 auto;
   padding: 0 15px;
 }
-
 /* Universal section paddings */
 .section {
   padding: 120px 0;
@@ -58,7 +57,6 @@ img {
   border-bottom: 1px solid #e7e9fc;
   background-color: #ffffff;
   align-items: center;
-
 }
 
 .header-container {
@@ -104,9 +102,33 @@ img {
   color: #2e2f42;
   padding: 24px 0;
   transition: color 250ms ease-in-out;
-  padding-bottom: 24px 0;
-  padding-right: 149px 0;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /*padding-bottom: 24px 0;
+  padding-right: 149px 0;*/
 }  
+
+/* Псевдоелемент підкреслення для активної/поточна сторінки */
+.nav-link.current,
+.nav-link.active {
+  color: #404bbf;
+  position: relative;
+  /* для ::after */
+}
+
+.nav-link.current::after,
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #404bbf;
+  border-radius: 2px 2px 0 0;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .nav-link:hover,
 .nav-link:focus {
@@ -136,6 +158,7 @@ img {
   color: #434455;
   letter-spacing: 0.02em;
   transition: color 250ms ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-link:hover,
@@ -145,6 +168,7 @@ img {
 
 /* Hero Section */
 .hero {
+  position: relative;
   background-color: #2e2f42;
   height: 600px;
   display: flex;
@@ -152,6 +176,18 @@ img {
   align-items: center;
   text-align: center;
   padding: 188px 0;
+  color: #ffffff;
+  background-image:
+  linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+  url("../images/people-office\ 1.jpg");
+    /* шлях до фонового зображення */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+    /* щоб не розтягувалось більше 1440px */
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-content {
@@ -180,6 +216,7 @@ img {
   color: #ffffff;
   border: none;
   border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   padding: 16px 32px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -197,8 +234,10 @@ img {
 /* Features */
 .features {
   padding: 120px 0;
-
 }
+
+/* Додати стилі для іконок SVG в .feature-item */
+/* Припустимо, іконка додається в HTML як <svg class="feature-icon"><use xlink:href="#icon-name"></use></svg> */
 
 .feature-list {
   display: flex;
@@ -209,6 +248,25 @@ img {
   width: 262.6px;
   height: 125px;
   flex-basis: calc((100% - 72px) / 4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  fill: #4d5ae5;
+  /* колір іконки */
+  margin-bottom: 16px;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-item:hover .feature-icon,
+.feature-item:focus-within .feature-icon {
+  fill: #404bbf;
+  /* активний колір при hover/focus */
 }
 
 .feature-title {
@@ -223,10 +281,6 @@ img {
   color: #434455;
 }
 
-.team {
-  background-color: #f4f4fd;
-  padding: 120px 0;
-}
 /* Team */
 .team {
   background-color: #f4f4fd;
@@ -264,6 +318,27 @@ img {
   overflow: hidden;
   width: 264px;
   text-align: center;
+  position: relative;
+}
+/* Соцмережі в команді (припустимо іконки додаються як SVG) */
+.team-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  transition: color 250ms ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+
+.team-socials svg:hover,
+.team-socials svg:focus {
+  fill: #404bbf;
+}
+
+.team-icon {
+  display: block;
+  color: #ffffff;
 }
 
 .team-img {
@@ -324,21 +399,61 @@ img {
 .portfolio-item {
   width: 360px;
   height: 420px;
-  border: 1px solid #e7e9fc;
+  /*border: 1px solid #e7e9fc;*/
   border-top: none;
   border-radius: 4px;
   background-color: #ffffff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+/* Тінь при ховері по картці */
+.portfolio-item:hover,
+.portfolio-item:focus-within {
+box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
+}
+
+/* Оверлей з текстом, який з’являється при ховері */
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(77, 90, 229, 0.8);
+  /* синій оверлей */
+  color: #fff;
+  padding: 24px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 4px 4px;
+  pointer-events: none;
+  /* щоб не заважав, коли неактивний */
+}
+
+.portfolio-item:hover .portfolio-overlay,
+.portfolio-item:focus-within .portfolio-overlay {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .portfolio-text {
   padding: 32px 16px;
   text-align: left;
   border: 1px solid #e7e9fc;
   border-top: none;
+  z-index: 10;
+    /* щоб перекривати бекграунд */
 }
 
 .portfolio-name {
@@ -357,7 +472,6 @@ img {
 /* --- Футер --- */
 .footer {
   background-color: #2e2f42;
-  /*color: #f4f4fd;*/
   padding: 100px 0
 }
 
@@ -387,4 +501,29 @@ img {
   letter-spacing: 0.02em;
   max-width: 264px;
   font-size: 16px;
+}
+.footer-socials-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer-socials-list {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: background-color 250ms ease-in-out;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+  transform: scale(1.1);
 }
