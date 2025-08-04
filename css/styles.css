@@ -52,6 +52,16 @@ img {
 .section {
   padding: 120px 0;
 }
+/* Уніфікована стилізація всіх SVG */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  transition: fill 250ms ease-in-out;
+}
+
+
+
 /* Region Header */
 .header {
   border-bottom: 1px solid #e7e9fc;
@@ -252,15 +262,23 @@ img {
   flex-direction: column;
   align-items: flex-start
 }
+
+.features-icon-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100px;
+height: 100px;
+background-color: #f4f4fd;
+border-radius: 4px;
+margin-bottom: 8px;
+}
+/* FEATURES icons */
 .feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
   fill: #4d5ae5;
-  /* колір іконки */
   margin-bottom: 16px;
-  transition-property: fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-item:hover .feature-icon,
