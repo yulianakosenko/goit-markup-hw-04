@@ -245,8 +245,6 @@ svg {
   padding: 120px 0;
 }
 
-/* Додати стилі для іконок SVG в .feature-item */
-/* Припустимо, іконка додається в HTML як <svg class="feature-icon"><use xlink:href="#icon-name"></use></svg> */
 
 .feature-list {
   display: flex;
@@ -267,13 +265,12 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 264px;
   height: 112px;
+  width: 264px;
   background-color: #f4f4fd;
   border-radius: 4px;
   border: 1px solid #8e8f99;
   margin-bottom: 8px;
-  /* Відступ між блоком та заголовком */
 }
 /* FEATURES icons */
 .feature-icon {
@@ -283,7 +280,6 @@ svg {
   margin-bottom: 16px;
   padding: 16px;
   color: rgba(46, 47, 66, 1);rgba(77, 90, 229, 1);
-
 }
 
 .feature-item:hover .feature-icon,
