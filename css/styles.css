@@ -122,8 +122,7 @@ svg {
   line-height: 1.5;
   letter-spacing: 0.02em;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  
+  position: relative; 
 }  
 
 .nav-link.current {
@@ -142,12 +141,10 @@ svg {
  color: #404bbf;
 }
 
-
 .nav-link:hover,
 .nav-link:focus {
   color: #404bbf;
 }
-
 
 /* Contacts */
 .contacts {
@@ -176,6 +173,7 @@ svg {
 }
 
 /* Hero Section */
+
 .hero {
   position: relative;
   background-color: #2e2f42;
@@ -186,9 +184,10 @@ svg {
   text-align: center;
   padding: 188px 0;
   color: #ffffff;
-  background-image:linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-  url("../images/people-office\ 1.jpg");
+  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+      url("../images/people-office 1.jpg");
     /* шлях до фонового зображення */
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -232,7 +231,7 @@ svg {
   line-height: 1.5;
   letter-spacing: 0.04em;
   cursor: pointer; 
-  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -251,6 +250,7 @@ svg {
 .feature-list {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 .feature-item {
@@ -259,18 +259,29 @@ svg {
   flex-basis: calc((100% - 72px) / 4);
   display: flex;
   flex-direction: column;
-  align-items: flex-start
+  align-items: flex-start;
 }
 
-.features-icon-wrapper {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 100px;
-height: 100px;
-background-color: #f4f4fd;
-border-radius: 4px;
-margin-bottom: 8px;
+.feature-icon-wrapper {
+  display: flex;
+  /* Змінюємо розташування елемента */
+  align-items: center;
+  /* Вирівнювання по вертикалі */
+  justify-content: center;
+  /* Вирівнювання по горизонталі */
+
+  width: 264px;
+  /* Ширина контейнера */
+  height: 112px;
+  /* Висота контейнера */
+  background-color: #f4f4fd;
+  /* Колір фону */
+  border-radius: 4px;
+  /* Закруглені кути */
+  border: 1px solid #8e8f99;
+  /* Обводка */
+  margin-bottom: 8px;
+  /* Відступ між блоком та заголовком */
 }
 /* FEATURES icons */
 .features-icon {
@@ -278,6 +289,9 @@ margin-bottom: 8px;
   height: 64px;
   fill: #4d5ae5;
   margin-bottom: 16px;
+  padding: 16px;
+  color: rgba(46, 47, 66, 1);rgba(77, 90, 229, 1);
+
 }
 
 .feature-item:hover .feature-icon,
