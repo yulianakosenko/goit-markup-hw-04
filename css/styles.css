@@ -144,7 +144,7 @@ svg {
 
 .nav-link:hover,
 .nav-link:focus, 
-.nav-link.current, {
+.nav-link.current {
   color: #404bbf;
 }
 
@@ -186,7 +186,7 @@ svg {
   text-align: center;
   padding: 188px 0;
   color: #ffffff;
-  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url("../images/people-office 1.jpg");
+  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url("../images/people-office1.jpg");
     /* шлях до фонового зображення */
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -276,7 +276,7 @@ svg {
   /* Відступ між блоком та заголовком */
 }
 /* FEATURES icons */
-.features-icon {
+.feature-icon {
   width: 64px;
   height: 64px;
   fill: #4d5ae5;
@@ -305,19 +305,26 @@ svg {
 }
 
 /* Загальний стиль для секції "Team" */
+:root {
+  --primary-color: #4d5ae5;
+  --primary-color-hover: #404bbf;
+  --icon-color: #f4f4fd;
+}
+
+/* Загальний стиль для секції "Team" */
 .team {
   background-color: #f4f4fd;
   padding: 120px 0;
 }
 
-/* Стиль для контейнера */
+/* Контейнер */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-/* Заголовок секції */
+/* Заголовок */
 .team-title {
   font-size: 36px;
   line-height: 1.11;
@@ -329,7 +336,7 @@ svg {
   text-transform: capitalize;
 }
 
-/* Стиль для списку карток команди */
+/* Список карток */
 .team-list {
   display: flex;
   flex-wrap: wrap;
@@ -340,11 +347,13 @@ svg {
   list-style: none;
 }
 
-/* Стиль для картки команди */
+/* Картка учасника */
 .team-item {
   background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+  border-radius: 0 0 4px 4px;
+  /* для першого елемента */
+  box-shadow:
+    0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
   overflow: hidden;
@@ -353,19 +362,19 @@ svg {
   position: relative;
 }
 
-/* Зображення учасника команди */
+/* Зображення учасника */
 .team-img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-/* Стиль для інформації про учасника */
+/* Контейнер інформації */
 .team-info {
   padding: 32px 0;
 }
 
-/* Ім'я учасника */
+/* Ім'я */
 .team-name {
   font-size: 20px;
   font-weight: 500;
@@ -374,67 +383,56 @@ svg {
   margin-bottom: 8px;
 }
 
-/* Посада учасника */
+/* Посада */
 .team-role {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   color: #434455;
+  margin-bottom: 8px;
 }
 
-/* Стиль для списку соціальних мереж */
+/* Список соціальних мереж */
 .team-socials {
   display: flex;
   justify-content: center;
+
   gap: 24px;
-  padding-bottom: 16px;
-  transition: color 250ms ease-in-out;
+  
+  margin: 0;
+  list-style: none;
 }
 
-/* Стиль для елементів соцмереж */
+/* Елемент соцмережі */
 .team-socials li {
   width: 40px;
   height: 40px;
 }
 
-/* Стиль для посилань у соцмережах */
-.team-socials a {
+/* Посилання соцмережі */
+.team-social-link {
   width: 100%;
   height: 100%;
-  background-color: var(--primary-color, #4d5ae5);
+  background-color: var(--primary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Зміна фону при ховері та фокусі на посиланнях */
-.team-socials a:hover,
-.team-socials a:focus {
-  background-color: #404bbf;
+/* Ховер і фокус на посиланнях */
+.team-social-link:hover,
+.team-social-link:focus {
+  background-color: var(--primary-color-hover);
 }
 
-:root {
-  --primary-color: #4d5ae5;
-  /* Ваше значення для кольору */
-}
-
+/* Іконки соцмереж */
 .icon {
-  fill: var(--primary-color, #f4f4fd);
-  /* Змінна для кольору */
   width: 16px;
   height: 16px;
+  fill: var(--icon-color);
 }
-
-/* Стиль для іконок соцмереж */
-.team-socials svg {
-  width: 24px;
-  height: 24px;
-  fill: #fff;
-}
-
 
 /* Portfolio  */
 .portfolio {
@@ -577,6 +575,19 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   padding: 100px 0;
 }
 
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  display: flex;
+  align-items: flex-start;
+  
+  gap: 40px;
+  flex-wrap: wrap;
+  /* Щоб адаптувалось на менших екранах */
+}
+
 .footer-logo {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -596,48 +607,60 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   font-weight: inherit;
   letter-spacing: inherit;
 }
-.footer-socials {
-  width: 208px;
-  /* Встановлюємо ширину */
-  height: 80px;
-  /* Встановлюємо висоту */
-  padding: 16px;
-  /* Встановлюємо відступи (spacing) */
-  position: absolute;
-  /* Позиціюємо елемент відносно батьківського контейнера */
-  left: 540px;
-  /* Встановлюємо позицію по осі X */
-  top: 3256px;
-  /* Встановлюємо позицію по осі Y */
-}
 
 .footer-text {
   line-height: 1.5;
   color: var(--footer-text-color, #f4f4fd);
   letter-spacing: 0.02em;
-  max-width: 264px;
+  max-width: 300px;
   font-size: 16px;
+  margin: 0;
 }
 
-/* Заголовок для соцмереж */
+/* Зробимо колонку для логотипу та тексту */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 120px;
+  
+}
+
+/* Відключаємо позиціонування absolute, використовуємо флекс */
+.footer-socials {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* Вирівняти соцмережі праворуч */
+  gap: 12px;
+  width: auto;
+  height: auto;
+  position: static;
+  /* скидаємо absolute */
+}
+
 .footer-socials-title {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin: 0;
   line-height: 1.5;
   letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  text-align: left;
 }
 
-/* Список соцмереж */
 .footer-socials-list {
   display: flex;
   gap: 16px;
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
-/* Посилання соцмереж */
 .footer-social-link {
   display: flex;
   justify-content: center;
@@ -649,19 +672,16 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   transition: background-color 250ms ease-in-out, transform 150ms ease-in-out;
 }
 
-/* Зміна кольору фону при ховері та фокусі */
 .footer-social-link:hover,
 .footer-social-link:focus {
   background-color: #31d0aa;
   transform: scale(1.1);
 }
 
-/* Іконки */
 .footer-social-link svg {
   width: 24px;
   height: 24px;
   fill: #f4f4fd;
-  /* Колір іконки */
 }
 
 /* Змінні для кольорів */
@@ -670,3 +690,4 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   --primary-color: #4d5ae5;
   --hover-color: #31d0aa;
 }
+
