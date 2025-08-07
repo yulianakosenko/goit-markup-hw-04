@@ -349,8 +349,8 @@ svg {
 
 /* Картка учасника */
 .team-item {
+  border-radius: 0;
   background-color: #ffffff;
-  border-radius: 0 0 4px 4px;
   /* для першого елемента */
   box-shadow:
     0px 1px 6px rgba(46, 47, 66, 0.08),
@@ -362,6 +362,10 @@ svg {
   position: relative;
 }
 
+
+.team-item:first-child {
+  border-radius: 0 0 4px 4px;
+}
 /* Зображення учасника */
 .team-img {
   width: 100%;
@@ -434,140 +438,105 @@ svg {
   fill: var(--icon-color);
 }
 
-/* Portfolio  */
+/* --- Portfolio Section --- */
 .portfolio {
   padding: 120px 0;
-  background-color: #ffffff;
 }
 
 .portfolio-title {
-  text-align: center;
   font-size: 36px;
-  font-weight: 700;
-  line-height: 1.11;
-  letter-spacing: 0.02em;
-  color: #2e2f42;
+  text-align: center;
   margin-bottom: 72px;
+  color: #2e2f42;
 }
 
+/* Portfolio list layout */
 .portfolio-list {
   display: flex;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 48px 24px;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
-  justify-items: center;
-  flex-wrap: wrap;
-  row-gap: 48px;  
-  line-height: 1.11;
-  letter-spacing: 0.02em;
-
 }
+
 .portfolio-item {
-  width: 360px;
-  height: 420px;
-  /*border: 1px solid #e7e9fc;*/
-  border-top: none;
-  border-radius: 4px;
+  width: calc((100% - 48px) / 3);
   background-color: #ffffff;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  cursor: pointer;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-description {
-  position: absolute;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #f4f4fd;
-  background-color: #4d5ae5;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+/* Hover effect with shadow */
+.portfolio-item:hover {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-/* Тінь при ховері по картці */
-.portfolio-item:hover,
-.portfolio-item:focus-within {
-box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
-}
-
-/* Оверлей для другого елемента */
+/* Image container with overlay */
 .portfolio-image-container {
   position: relative;
-  width: 360px;
-  height: 300px;
   overflow: hidden;
 }
 
+/* Image styling */
+.portfolio-image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Overlay container */
 .portfolio-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #4d5ae5;
-  /* Фон оверлею */
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  /* Оверлей не взаємодіє з мишею, поки не активний */
-  z-index: 1;
-  /* Перекриває картинку */
 }
 
-.portfolio-item:hover .portfolio-overlay {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-  /* Активуємо на ховері */
-}
-
+/* Overlay paragraph */
 .portfolio-paragraph {
+  position: absolute;
+  top: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  background-color: #4d5ae5;
+  color: #f4f4fd;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #f4f4fd;
-  padding: 0;
-  text-align: center;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Show overlay on hover */
+.portfolio-item:hover .portfolio-paragraph {
+  transform: translateY(0%);
+}
+
+/* Portfolio text below image */
 .portfolio-text {
   padding: 32px 16px;
-  text-align: left;
-  border: 1px solid #e7e9fc;
-  border-top: none;
-  z-index: 10;
-    /* щоб перекривати бекграунд */
 }
 
 .portfolio-name {
   font-size: 20px;
   font-weight: 500;
-  margin: 0 0 8px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+  margin: 0 0 8px 0;
 }
 
 .portfolio-role {
   font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   color: #434455;
-  margin: 0;
 }
-
 
 /* --- Футер --- */
 .footer {
@@ -577,15 +546,13 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
 
 .footer-container {
   max-width: 1200px;
-  margin: 0 auto;
   padding: 0 15px;
-
   display: flex;
-  align-items: flex-start;
-  
+  align-items: baseline;
   gap: 40px;
   flex-wrap: wrap;
-  /* Щоб адаптувалось на менших екранах */
+  gap: 120px 0;
+  margin: 0 auto;
 }
 
 .footer-logo {
@@ -622,7 +589,6 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-right: 120px;
   
 }
 
@@ -631,7 +597,7 @@ box-shadow: 0 4px 8px rgba(77, 90, 229, 0.4);
   padding: 16px 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   /* Вирівняти соцмережі праворуч */
   gap: 12px;
   width: auto;
