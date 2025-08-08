@@ -611,7 +611,7 @@ svg {
   padding: 0;
   margin: 0;
   list-style: none;
-  transition: background-color 250ms ease-in-out, transform 150ms ease-in-out;
+  
 }
 
 .footer-social-item {
